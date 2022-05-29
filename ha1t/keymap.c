@@ -185,6 +185,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
         ctrl_pressed = false;
       }
+      break;
 
     case MO(1):
       if (record->event.pressed) {
@@ -239,7 +240,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                   }
                   exceptionaly_ctrl_layer_pressed = false;
                 }
-                break;
+		return false;
 
             case KC_M:
                 if (record->event.pressed) {
@@ -253,9 +254,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                   }
                   exceptionaly_ctrl_layer_pressed = false;
                 }
-                break;
+		return false;
 
-            case KC_I
+	    case KC_I:
                 if (record->event.pressed) {
                   unregister_code(KC_LCTL);
                   register_code(KC_TAB);
@@ -267,7 +268,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                   }
                   exceptionaly_ctrl_layer_pressed = false;
                 }
-                break;
+		return false;
             }
         }
       // 他のキーが押されたらreset
